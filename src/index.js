@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-const mongoUri = 'mongodb+srv://udayarajurs:Password@123@cluster0.sw555.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const mongoUri = 'mongodb+srv://udaya:udaya@cluster0.07avj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useUnifiedTopology:true
 });
 
 mongoose.connection.on('connected', () => {
     console.log('connection done');
 });
-mongoose.connection.on('error', (err) => {
-    console.log('Error', err)
+mongoose.connection.on('error', err => {
+    console.error('Error', err);
 });
 
 
@@ -24,6 +24,6 @@ app.get('/' , ( req , res ) => {
 });
 
 app.listen(3000, () => {
-    console.log("Listen port 3000");
+    console.log('Listen port 3000');
 });
 
